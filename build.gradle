@@ -1,0 +1,52 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+repositories{
+    mavenCentral()
+}
+
+dependencies{
+    compile "commons-io:commons-io:2.1"
+    testCompile "junit:junit:4.10"
+}
+
+javaSrc = new File('src/main/java')
+javaRsc = new File('src/main/resources')
+javaTst = new File('src/test/java')
+
+task resources << {
+    javaSrc.mkdirs()
+    javaRsc.mkdirs()
+    javaTst.mkdirs()
+}
+
+
+compileJava.dependsOn 'resources'
+
+mainClassName="net.flow7.hoovy.Main"
+//mainClassName="net.flow7.hoovy.service.Client"
+//mainClassName="com.nexes.test.Main"
+
+jar {
+   manifest { attributes 'Main-Class': 'net.flow7.hoovy.Main' }
+}
+
+task writePom << {
+    pom {
+        project {
+            inceptionYear '2012'
+            groupId 'net.flow7.drive-cleaners'
+            artifactId 'drive-cleaners-client'
+            version '1.0-SNAPSHOT'
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+        }
+    }.writeTo("pom.xml")
+}

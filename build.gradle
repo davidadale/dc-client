@@ -8,8 +8,8 @@ repositories{
 }
 
 dependencies{
-    compile "commons-io:commons-io:2.1"
-    compile "commons-cli:commons-cli:1.2"
+    runtime "commons-io:commons-io:2.1"
+    runtime "commons-cli:commons-cli:1.2"
     testCompile "junit:junit:4.10"
 }
 
@@ -25,6 +25,7 @@ task resources << {
 
 task uberjar(type: Jar) {
     from files(sourceSets.main.output.classesDir)
+    from files(sourceSets.main.output.resourcesDir)
     from configurations.runtime.asFileTree.files.collect { zipTree(it) }
 
     manifest {
@@ -38,9 +39,9 @@ mainClassName="net.flow7.hoovy.Main"
 //mainClassName="net.flow7.hoovy.service.Client"
 //mainClassName="com.nexes.test.Main"
 
-jar {
-   manifest { attributes 'Main-Class': 'net.flow7.hoovy.Main' }
-}
+//jar {
+//   manifest { attributes 'Main-Class': 'net.flow7.hoovy.Main' }
+//}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.1'

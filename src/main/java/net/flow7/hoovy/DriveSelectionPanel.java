@@ -42,15 +42,21 @@ public class DriveSelectionPanel extends JPanel{
         //add(secondaryPanel, BorderLayout.CENTER);
 
 
-        fc = new JFileChooser();
-        fc.setControlButtonsAreShown(false);
-        fc.setFileHidingEnabled(true);
-        fc.setFileFilter( new FileFilter(){
-           public boolean accept(File f){ return f.isDirectory(); }
-           public String getDescription(){ return "File Location";} 
-        });
+        //fc = new JFileChooser();
+        //fc.setControlButtonsAreShown(false);
+        //fc.setFileHidingEnabled(true);
+        //fc.setFileFilter( new FileFilter(){
+        //   public boolean accept(File f){ return f.isDirectory(); }
+        //   public String getDescription(){ return "File Location";} 
+        //});
+        
+        JPanel jPanel1 = new JPanel();
+        jPanel1.add(new Label("Enter path to drive:"));
+        
         typeInPath = new JTextField( 40);
-        add( typeInPath );
+        jPanel1.add( typeInPath );
+        
+        add( jPanel1 );
         
         //Create a file chooser
   //      fc = new JFileChooser();

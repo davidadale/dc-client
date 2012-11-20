@@ -16,13 +16,13 @@ public class Main{
     */
     public static void main(String[] args){
         
-        while( !registered()  ){
+        /*while( !registered()  ){
             if( tooManyTrys() ){ System.exit(0); }
             registrationAttempts++;
             String code = promptForRegistrationCode();
             if( code==null ){ System.exit(0); } // canceled.
             if ( verifyCode( code ) ){ break; }
-        }
+        }*/
         
         try{
             UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );

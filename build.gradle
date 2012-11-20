@@ -9,6 +9,7 @@ repositories{
 
 dependencies{
     compile "commons-io:commons-io:2.1"
+    compile "commons-cli:commons-cli:1.2"
     testCompile "junit:junit:4.10"
 }
 
@@ -32,6 +33,20 @@ mainClassName="net.flow7.hoovy.Main"
 jar {
    manifest { attributes 'Main-Class': 'net.flow7.hoovy.Main' }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.1'
+}
+
+task(print){
+    println "Foo bar bang jazz"
+}
+
+task(runClient, dependsOn: 'classes', type: JavaExec) {
+    main = 'net.flow7.hoovy.Cli'
+    classpath = sourceSets.main.runtimeClasspath    
+}
+
 
 task writePom << {
     pom {

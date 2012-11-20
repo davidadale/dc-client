@@ -23,6 +23,14 @@ task resources << {
     javaTst.mkdirs()
 }
 
+task uberjar(type: Jar) {
+    from files(sourceSets.main.output.classesDir)
+    from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+
+    manifest {
+        attributes 'Main-Class': 'test.tree.App'
+    }
+}
 
 compileJava.dependsOn 'resources'
 

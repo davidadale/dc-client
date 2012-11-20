@@ -28,7 +28,7 @@ task uberjar(type: Jar) {
     from configurations.runtime.asFileTree.files.collect { zipTree(it) }
 
     manifest {
-        attributes 'Main-Class': 'test.tree.App'
+        attributes 'Main-Class': 'net.flow7.hoovy.Main'
     }
 }
 
